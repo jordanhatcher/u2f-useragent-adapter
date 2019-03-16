@@ -7,7 +7,7 @@ const urls = ['https://www.facebook.com/checkpoint/*'];
 const options = ['blocking', 'requestHeaders'];
 
 // Listener that replaces the user agent
-function setUserAgentOnFbLogin(e) {
+function setUserAgentOnLogin(e) {
   const userAgentHeader = e.requestHeaders.find((header) => header.name.toLowerCase() === 'user-agent');
   userAgentHeader.value = userAgent;
   console.debug('Updated user agent');
@@ -16,4 +16,4 @@ function setUserAgentOnFbLogin(e) {
 
 // Set up the listener
 const onBeforeSendHeaders = browser.webRequest.onBeforeSendHeaders;
-onBeforeSendHeaders.addListener(setUserAgentOnFbLogin, { urls }, options);
+onBeforeSendHeaders.addListener(setUserAgentOnLogin, { urls }, options);
